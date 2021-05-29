@@ -8,6 +8,7 @@
 #define FOR(i, a, b) for(int i = a; i <= b; i++)
 #define FORd(i, a, b) for(int i = a; i >= b; i--)
 #define pb vector::push_back
+#define PB vector::pop_back
 
 using namespace std;
 
