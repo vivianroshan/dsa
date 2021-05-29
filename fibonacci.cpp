@@ -1,11 +1,8 @@
 #include<iostream>
 int fibonacci(int n,long long *fib, int temp=0,long long result_0=-1, long long result_1=1){
     if (temp<=n){
-        int te=result_1;
-        result_1=result_0+result_1;
-        result_0=te;
-        fib[temp]=result_1;
-        fibonacci(n,fib,temp+1,result_0,result_1);
+        fib[temp]=result_0+result_1;
+        fibonacci(n,fib,temp+1,result_1,result_0+result_1);
     }
     return 0;
 }
