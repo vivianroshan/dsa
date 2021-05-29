@@ -19,7 +19,7 @@ void worldRecord(float v){
     float wrspeed=round(10000/TIME);
     wrspeed/=100;
     v/=100;
-    // cout << wrspeed << " " << v <<endl;
+    cout << wrspeed << " " << v <<endl;
     cout << ((wrspeed>=v)?"NO":"YES") << endl;
 }
 
