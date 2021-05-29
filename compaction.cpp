@@ -1,5 +1,16 @@
+//compaction
+
 #include<iostream>
 #include<vector>
+
+#define vi vector<int>
+#define pb vector::push_back
+#define FOR(i, a, b) for(int i = a; i <= b; i++)
+#define FORd(i, a, b) for(int i = a; i >= b; i--)
+#define pb vector::push_back
+#define PB vector::pop_back
+
+typedef long long ll;
 
 using namespace std;
 class compact{

@@ -10,6 +10,8 @@
 #define pb vector::push_back
 #define PB vector::pop_back
 
+typedef long long ll;
+
 using namespace std;
 
 void ordinaryNumbers(int n){
