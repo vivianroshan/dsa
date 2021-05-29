@@ -2,8 +2,7 @@
 
 //sameDifferences
 
-#include<iostream>
-#include<vector>
+#include<bits\stdc++.h>
 
 #define vi vector<int>
 #define pb vector::push_back
