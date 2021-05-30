@@ -1,0 +1,2 @@
+cd Desktop/Projects/Lempel-ziv
+i/p = 101011011010101010
