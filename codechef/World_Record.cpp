@@ -20,7 +20,7 @@ using namespace std;
 void worldRecord(float v){
     float time=int(10000/v+0.5);
     time/=100;
-    cout << wr_time << " " << time <<endl;
+    // cout << wr_time << " " << time <<endl;
     cout << ((time<wr_time)?"YES":"NO") << endl;
 }
 
