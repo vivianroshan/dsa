@@ -20,18 +20,21 @@ void ctime(int n, int k, int f){
         cin >> x >> y;
         proc.pb(mp(x,y));
     }
-    int start, finish, time = 0;
+    int start, finish=0, time = 0;
     sort(proc.begin(),proc.end());
     FOR(j, 0, n){
         start=proc[j].F;
+        if (start>f)break;
         while(j!=n-1 && proc[j].S>=proc[j+1].F){
+            finish=max(proc[j].S,finish);
             j++;
         }
-        finish=proc[j].S;
-        time+=(finish-start);
+        finish=min(proc[j].S,f);
+        // finish=min(proc[j].S,f);
+        time+=max(finish-start,0);
     }
-    // cout << f-time << " " << k << " ";
-    cout << ((f-time>=k)?"YES":"NO") << endl;   
+    // cout << f-time << "\t" << k << "\t" << f-time-k<< "\t";
+    cout << ((f-time-k>=0)?"YES":"NO") << endl;   
 }
 
 int main(){

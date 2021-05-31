@@ -13,6 +13,12 @@
 
 using namespace std;
 
+bool sortbysec(const pair<int,int> &a,
+              const pair<int,int> &b)
+{
+    return (a.second < b.second);
+}
+
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
