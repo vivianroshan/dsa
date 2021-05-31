@@ -13,40 +13,41 @@
 
 using namespace std;
 
-void ctime(int N, int K, int f){
-    vector<pair<int,int>> proc(K);
+void ctime(int n, int k, int f){
+    vector<pair<int,int>> proc;
     int x, y;
-    FOR(i, 0, N){
+    FOR(i, 0, n){
         cin >> x >> y;
-        proc[i]=(make_pair(x,y));
-        // cout<<(proc[i]).first<<" "<<(proc[i]).second<<" ";
+        proc.pb(mp(x,y));
     }
-    int time = 0;
+    int start, finish, time = 0;
     sort(proc.begin(),proc.end());
-    FOR(j, 1, N+1){
-        int start=proc[j-1].first;
-        cout<<start<<" ";
-        while(j!=N && proc[j-1].S>=proc[j].F){
+    FOR(j, 0, n){
+        start=proc[j].F;
+        while(j!=n-1 && proc[j].S>=proc[j+1].F){
             j++;
-            // cout << j << " " << proc[j-1].S << " " <<proc[j].F;
         }
-        int finish=proc[j-1].S;
+        finish=proc[j].S;
         time+=(finish-start);
-        cout<<finish<<endl;
     }
-    cout << time << " " << f-time << " " << K << " ";
-    cout << ((f-time>K)?"YES":"NO") << endl;   
+    // cout << f-time << " " << k << " ";
+    cout << ((f-time>=k)?"YES":"NO") << endl;   
 }
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int T, N, K, f;
+    int T, n, k, f; 
+    /*  T - No of test cases
+        n - No of of invigilators 
+        k - Time needed to cheat 
+        f - Total time
+    */
     cin>>T;
     FOR(i,0,T){
-        cin>>N>>K>>f;
-        ctime(N,K,f);
+        cin>>n>>k>>f; 
+        ctime(n,k,f);
     }
     return 0;
 }
