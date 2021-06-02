@@ -9,8 +9,8 @@
 #define pb push_back
 #define endl '\n'
 #define um unordered_map
-#define FOR(i, a, b) for(int i = a; i < b; i++)
-#define FORd(i, a, b) for(int i = a-1; i >= b; i--)
+#define FOR(i, a, b) for(ll i = a; i < b; i++)
+#define FORd(i, a, b) for(ll i = a-1; i >= b; i--)
 
 using namespace std;
 
@@ -22,82 +22,45 @@ bool sortbysec(const pair<int,int> &a,
     return (a.second < b.second);
 }
 
-vector<ll> prime(long long L, long long R){
-    ll sr=sqrt(R);
-    vector<ll> v(sr+3,1);
-    vector<ll> primes;
-    for(ll i=2;i<=sr;i++) {
+vll primeCount(ll n){
+    vll v(n+1,1);
+    vll countArray(2,0);
+    ll count=0;
+    FOR(i, 2, n+1) {
         if(v[i]==1){
-            primes.push_back(i);
-            for(ll j=i*i;j<=sr;j+=i) {
+            count++;
+            for(ll j=i*i; j<=n; j+=i) {
                 v[j]=0;
             }
         }
+        countArray.push_back(count);
     }
-    vector<ll> ans(R-L+1,1);
-    for(auto c:primes) {
-        ll b=(L/c) *c;
-        if(b<L){
-            b+=c;
-        }
-        if(b==c){
-            b+=c;
-        }
-        for(ll j=b;j<=R;j+=c) {
-            ans[j-L]=0;
-        }
-    }
-    vector<ll> res;
-    for(ll i=L;i<=R;i++) {
-        if(ans[i-L]==1  && i!=1) {
-            res.push_back(i);
-        }
-    }
-    return res;        
+    return countArray;
 }
 
-void totalComponents(ll eh, vll &pr){
-    ll gr=1;
-    if (eh==1){
-        cout << 1 << endl;
-        return;
-    }
-    if (eh==2){
-        cout << 1 << endl;
-        return;
-    }
-    if (eh==3){
-        cout << 2 << endl;
-        return;
-    }
-    for(auto x:pr){
-        // cout<<p<<"\t";
-        if (x>eh)break;
-        if(x*2<=eh)gr++;
-    }
-    // cout<<endl;
-    cout << gr << endl;
+ll totalComponents(ll x, vll &pr){
+    if (x==1 || x==2)return 1;
+    if (x==3)return 2;
+    return pr[x]-pr[x/2]+1;
 }
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
     vll inputs;
-    ll T,asd;
+    ll T, tillN;
     cin >> T;
-    int maxe=0;
+    int maxim=0;
     FOR(i, 0, T){
-        cin >> asd;
-        inputs.pb(asd);
-        maxe=(asd>maxe)?asd:maxe;
+        cin >> tillN;
+        inputs.pb(tillN);
+        maxim=(tillN>maxim)?tillN:maxim;
     }
-    vll pr=prime(1,maxe);
-    for (auto y : pr){
-        cout << y << " ";
-    }
-    cout << endl;
+    
+    vll pr=primeCount(maxim);
+
     for(auto x:inputs){
-        totalComponents(x,pr);
+        cout << totalComponents(x,pr) << endl;
     }
     
 
